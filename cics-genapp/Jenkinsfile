@@ -17,10 +17,12 @@ def dbbHlq=null
 def dbbBuildType='-i'
 def dbbGroovyzOpts= ''
 def dbbBuildExtraOpts= ''
-def dbbCredentialOptions='-id ADMIN -pw ADMIN'
+//def dbbCredentialOptions='-id ADMIN -pw ADMIN'
+def dbbCredentialOptions='-id SLAURIT -pf /u/slaurit/password.txt --url jdbc:db2://tvt7111.svl.ibm.com:5050/DBC1 '
+
 
 // Artifactory
-def artiCredentialsId = 'artifactory_id'
+def artiCredentialsId = 'scott-artifactory_id'
 
 
 // UCD
