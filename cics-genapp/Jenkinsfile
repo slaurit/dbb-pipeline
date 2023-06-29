@@ -3,25 +3,26 @@ def zOsAgentLabel = env.ZOS_AGENT_LABEL ? env.ZOS_AGENT_LABEL : 'chris-zos-agent
 def linuxAgent = 'master'
 
 // GIT repositories
-def srcGitRepo =  null
-def srcGitBranch = null
-def zAppBuildGitRepo = 'https://github.com/IBM/dbb-zappbuild.git'
+def srcGitRepo =  'https://github.com/crpotter/dbb-pipeline.git'
+def srcGitBranch = 'main'
+def zAppBuildGitRepo = 'http://MVPGitLabServer1.fyre.ibm.com/dbb310/dbb320/dbb-zappbuild.git'
 def zAppBuildGitBranch = 'main'
-def dbbGitRepo = 'https://github.com/IBM/dbb.git'
+def dbbGitRepo = 'http://mvpgitlabserver1.fyre.ibm.com/dbb310/dbb'
 def dbbGitBranch = 'main'
 
 // DBB
-def dbbHome=null
-def dbbUrl=null
-def dbbHlq=null
-def dbbBuildType='-i'
-def dbbGroovyzOpts= ''
+def dbbHome='/var/dbb'
+def dbbUrl='https://mvpserver1.fyre.ibm.com:9443/dbb'
+def dbbHlq='CPOTTER.JENKINS'
+def dbbBuildType='-f'
+def dbbGroovyzOpts= '-Dorg.slf4j.simpleLogger'
 def dbbBuildExtraOpts= ''
-def dbbCredentialOptions='-id ADMIN -pw ADMIN'
+def dbbCredentialOptions='-id CPOTTER -pf /u/cpotter/password.txt --url jdbc:db2://tvt7111.svl.ibm.com:5050/DBC1 '
 
 // Artifactory
-def artiCredentialsId = 'artifactory_id'
-
+def artiCredentialsId = 'chris-artifactory_id'
+def ARTIFACTORY_URL='https://na.artifactory.swg-devops.com/artifactory/'
+def ARTIFACTORY_REPO_PATH='hyc-mvp-team-maven-local/cpotter'
 
 // UCD
 def ucdApplication = 'chris-GenApp-Deploy'
@@ -29,13 +30,14 @@ def ucdProcess = 'Deploy'
 def ucdComponent = 'chris-GenAppComponent'
 def ucdEnv = 'Development'
 def ucdSite = 'Jenkins2UCDServer'
+def ucdBuztool = '/var/ucd/v73/bin/buztool.sh'
 
 // Verbose
-def verbose = false
+def verbose = true
 
 // Private
 def hasBuildFiles = true
-def idzCodeReviewFlag = false
+def idzCodeReviewFlag = true
 def buildVerbose = ''
 
 @NonCPS
