@@ -250,7 +250,6 @@ pipeline {
                         if ( hasBuildFiles ) {
                             def artiUrl = getArtifactoruUrl(env.ARTIFACTORY_URL)
                             def repositoryPath = env.ARTIFACTORY_REPO_PATH
-                            def ucdBuztool = env.UCD_BUZTOOL_PATH
                             BUILD_OUTPUT_FOLDER = sh (script: "ls ${WORKSPACE}/BUILD-${BUILD_NUMBER}  | grep build | sort -u", returnStdout: true).trim()
                             dir("${WORKSPACE}/BUILD-${BUILD_NUMBER}/${BUILD_OUTPUT_FOLDER}") {
                                 withCredentials([usernamePassword(credentialsId: artiCredentialsId, usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
