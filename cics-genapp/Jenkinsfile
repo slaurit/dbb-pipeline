@@ -1,5 +1,5 @@
 // Agent labels
-def zOsAgentLabel = env.ZOS_AGENT_LABEL ? env.ZOS_AGENT_LABEL : 'e2e-pipeline'
+def zOsAgentLabel = env.ZOS_AGENT_LABEL ? env.ZOS_AGENT_LABEL : 'chris-zos-agent'
 def linuxAgent = 'master'
 
 // GIT repositories
@@ -24,11 +24,11 @@ def artiCredentialsId = 'artifactory_id'
 
 
 // UCD
-def ucdApplication = 'GenApp-Deploy'
+def ucdApplication = 'chris-GenApp-Deploy'
 def ucdProcess = 'Deploy'
-def ucdComponent = 'GenAppComponent'
+def ucdComponent = 'chris-GenAppComponent'
 def ucdEnv = 'Development'
-def ucdSite = 'UrbanCodeE2EPipeline'
+def ucdSite = 'Jenkins2UCDServer'
 
 // Verbose
 def verbose = false
