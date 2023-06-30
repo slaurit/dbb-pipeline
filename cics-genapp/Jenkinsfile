@@ -267,7 +267,6 @@ EXTREPO.url=${artiUrl}
 //username=$USERNAME
 //Repository_type=artifactory
 //repository=${repositoryPath}
-//extRepoURL=${artiUrl}
 //url=${artiUrl}
                                       """
                                 }
