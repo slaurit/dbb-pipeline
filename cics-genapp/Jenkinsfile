@@ -258,11 +258,16 @@ pipeline {
                             dir("${WORKSPACE}/BUILD-${BUILD_NUMBER}/${BUILD_OUTPUT_FOLDER}") {
                                 withCredentials([usernamePassword(credentialsId: artiCredentialsId, usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                                     writeFile file: "${WORKSPACE}/BUILD-${BUILD_NUMBER}/artifactoy.properties", encoding: "ibm-1047",
-                                       text:"""password=$PASSWORD
-username=$USERNAME
-Repository_type=artifactory
-repository=${repositoryPath}
-extRepoURL=${artiUrl}
+                                        text:"""EXTREPO.APIKEY=$PASSWORD
+EXTREPO.username=$USERNAME
+EXTREPO.Repository_type=artifactory
+EXTREPO.repository=${repositoryPath}
+EXTREPO.url=${artiUrl}
+//  text:"""password=$PASSWORD
+//username=$USERNAME
+//Repository_type=artifactory
+//repository=${repositoryPath}
+//extRepoURL=${artiUrl}
 //url=${artiUrl}
                                       """
                                 }
