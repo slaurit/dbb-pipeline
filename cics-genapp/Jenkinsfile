@@ -23,7 +23,7 @@ def dbbCredentialOptions='-id SLAURIT -pf /u/slaurit/password.txt --url jdbc:db2
 // Artifactory
 def artiCredentialsId = 'scott-artifactory_id'
 def ARTIFACTORY_URL='https://na.artifactory.swg-devops.com/artifactory/'
-def ARTIFACTORY_REPO_PATH='hyc-mvp-team-maven-local/slaurit'
+def ARTIFACTORY_REPO_PATH='hyc-mvp-team-maven-local/MVPGenapp'
 
 
 // UCD
@@ -258,7 +258,7 @@ pipeline {
                             dir("${WORKSPACE}/BUILD-${BUILD_NUMBER}/${BUILD_OUTPUT_FOLDER}") {
                                 withCredentials([usernamePassword(credentialsId: artiCredentialsId, usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                                     writeFile file: "${WORKSPACE}/BUILD-${BUILD_NUMBER}/artifactoy.properties", encoding: "ibm-1047",
-                                        text:"""EXTREPO.APIKEY=$PASSWORD
+                                        text:"""EXTREPO.password=$PASSWORD
 EXTREPO.username=$USERNAME
 EXTREPO.Repository_type=artifactory
 EXTREPO.repository=${repositoryPath}
@@ -266,6 +266,7 @@ EXTREPO.url=${artiUrl}
 
                                       """
                                 }
+//  text:"""EXTREPO.APIKEY=$PASSWORD
 //  text:"""password=$PASSWORD
 //username=$USERNAME
 //Repository_type=artifactory
