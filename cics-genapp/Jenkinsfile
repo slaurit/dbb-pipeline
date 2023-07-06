@@ -23,7 +23,7 @@ def dbbCredentialOptions='-id SLAURIT -pf /u/slaurit/password.txt --url jdbc:db2
 // Artifactory
 def artiCredentialsId = 'scott-artifactory_id'
 def ARTIFACTORY_URL='https://na.artifactory.swg-devops.com/artifactory/'
-def ARTIFACTORY_REPO_PATH='hyc-mvp-team-maven-local/MVPGenapp'
+def ARTIFACTORY_REPO_PATH='hyc-mvp-team-maven-local/slaurit'
 
 
 // UCD
@@ -251,7 +251,8 @@ pipeline {
                 script {
                     node( zOsAgentLabel ) {
                         if ( hasBuildFiles ) {
-                            def artiUrl = getArtifactoruUrl(env.ARTIFACTORY_URL)
+                            //def artiUrl = getArtifactoruUrl(env.ARTIFACTORY_URL)
+                            def artiUrl = env.ARTIFACTORY_URL
                             def repositoryPath = env.ARTIFACTORY_REPO_PATH
                             //def ucdBuztool = env.UCD_BUZTOOL_PATH
                             BUILD_OUTPUT_FOLDER = sh (script: "ls ${WORKSPACE}/BUILD-${BUILD_NUMBER}  | grep build | sort -u", returnStdout: true).trim()
