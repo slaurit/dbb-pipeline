@@ -18,8 +18,8 @@
       * Select customer details from DB2 table                         *
       *                                                                *
       *                                                                *
-      *   ray lam 03/08 verify
-      ***************20***************************************************
+      *   scott 07/06/2023 test                                        *
+      ******************************************************************
        IDENTIFICATION DIVISION.
        PROGRAM-ID. LGICDB01.
        ENVIRONMENT DIVISION.
