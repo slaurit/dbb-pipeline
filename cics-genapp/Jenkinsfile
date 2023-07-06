@@ -61,6 +61,28 @@ pipeline {
 
     options { skipDefaultCheckout(true) }
 
+    // to set environment variables flag
+    environment {
+        RUN_IDZ_CODE_REVIEW=false
+//        RUN_IDZ_CODE_REVIEW=true
+        JAVA_HOME='/usr/lpp/java/J11.0_64'
+        IBM_JAVA_ENABLE_ASCII_FILETAG='ON'
+        DBB_HOME='/var/dbb'
+        DBB_CONF='/var/dbb/conf'
+    //  DBB_URL='https://dbbsample-dbb-route-dbbns.apps.mvpopenshift.cp.fyre.ibm.com/dbb/'
+        DBB_URL='https://mvpserver1.fyre.ibm.com:9443/dbb'
+        DBB_HLQ='SLAURIT.JENKINS'
+        ARTIFACTORY_URL='https://na.artifactory.swg-devops.com/artifactory'
+        ARTIFACTORY_REPO_PATH='hyc-mvp-team-maven-local/slaurit'
+//        ARTIFACTORY_REPO_PATH='hyc-mvp-team-maven-local/PriyaGenapp'
+        UCD_BUZTOOL_PATH='/var/ucd/v73/bin/buztool.sh'
+        UCD_HOME='/var/ucd/v73'
+        _BPX_JOBNAME = 'JENJOB'
+     //  GROOVYZ_BUILD_EXTRA_OPTS='-DBB_PERSONAL_DAEMON'
+     // GROOVYZ_BUILD_EXTRA_OPTS='-DBB_DAEMON_HOST 127.0.0.1 -DBB_DAEMON_PORT 8181'
+
+    }
+
     stages {
 
         stage('Git Clone/Refresh') {
