@@ -37,7 +37,7 @@ def verbose = true
 
 // Private
 def hasBuildFiles = true
-def idzCodeReviewFlag = true
+def idzCodeReviewFlag = false
 def buildVerbose = ''
 
 @NonCPS
@@ -57,6 +57,28 @@ pipeline {
     agent { label linuxAgent }
 
     options { skipDefaultCheckout(true) }
+
+    // to set environment variables flag
+    environment {
+        RUN_IDZ_CODE_REVIEW=false
+//        RUN_IDZ_CODE_REVIEW=true
+        JAVA_HOME='/usr/lpp/java/J11.0_64'
+        IBM_JAVA_ENABLE_ASCII_FILETAG='ON'
+        DBB_HOME='/var/dbb'
+        DBB_CONF='/var/dbb/conf'
+    //  DBB_URL='https://dbbsample-dbb-route-dbbns.apps.mvpopenshift.cp.fyre.ibm.com/dbb/'
+        DBB_URL='https://mvpserver1.fyre.ibm.com:9443/dbb'
+        DBB_HLQ='SLAURIT.JENKINS'
+        ARTIFACTORY_URL='https://na.artifactory.swg-devops.com/artifactory'
+        ARTIFACTORY_REPO_PATH='hyc-mvp-team-maven-local/slaurit'
+//        ARTIFACTORY_REPO_PATH='hyc-mvp-team-maven-local/PriyaGenapp'
+        UCD_BUZTOOL_PATH='/var/ucd/v73/bin/buztool.sh'
+        UCD_HOME='/var/ucd/v73'
+        _BPX_JOBNAME = 'JENJOB'
+     //  GROOVYZ_BUILD_EXTRA_OPTS='-DBB_PERSONAL_DAEMON'
+     // GROOVYZ_BUILD_EXTRA_OPTS='-DBB_DAEMON_HOST 127.0.0.1 -DBB_DAEMON_PORT 8181'
+
+    }
 
     stages {
         
@@ -248,17 +270,17 @@ pipeline {
                 script {
                     node( zOsAgentLabel ) { 
                         if ( hasBuildFiles ) {
-                            def artiUrl = getArtifactoruUrl(env.ARTIFACTORY_URL)
+                            def artiUrl = env.ARTIFACTORY_URL
                             def repositoryPath = env.ARTIFACTORY_REPO_PATH
                             BUILD_OUTPUT_FOLDER = sh (script: "ls ${WORKSPACE}/BUILD-${BUILD_NUMBER}  | grep build | sort -u", returnStdout: true).trim()
                             dir("${WORKSPACE}/BUILD-${BUILD_NUMBER}/${BUILD_OUTPUT_FOLDER}") {
                                 withCredentials([usernamePassword(credentialsId: artiCredentialsId, usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                                     writeFile file: "${WORKSPACE}/BUILD-${BUILD_NUMBER}/artifactoy.properties", encoding: "ibm-1047",
-                                       text:"""password=$PASSWORD
-username=$USERNAME
-Repository_type=artifactory
-repository=${repositoryPath}
-url=${artiUrl}
+                                       text:"""EXTREPO.password=$PASSWORD
+EXTREPO.username=$USERNAME
+EXTREPO.Repository_type=artifactory
+EXTREPO.repository=${repositoryPath}
+EXTREPO.url=${artiUrl}
                                       """
                                 }
                                 //sh "$dbbHome/bin/groovyz $dbbGroovyzOpts ${WORKSPACE}/dbb/Pipeline/CreateUCDComponentVersion/dbb-ucd-packaging.groovy --buztool ${ucdBuztool} --component ${ucdComponent} --workDir ${WORKSPACE}/BUILD-${BUILD_NUMBER}/${BUILD_OUTPUT_FOLDER} --artifactRepository ${WORKSPACE}/BUILD-${BUILD_NUMBER}/artifactoy.properties"
