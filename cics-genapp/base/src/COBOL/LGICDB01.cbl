@@ -19,6 +19,7 @@
       *                                                                *
       *                                                                *
       *   ray lam 03/08 verify
+      *   crp 06/10/2023
       ***************20***************************************************
        IDENTIFICATION DIVISION.
        PROGRAM-ID. LGICDB01.
