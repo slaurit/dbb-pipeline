@@ -60,8 +60,8 @@ pipeline {
 
     // to set environment variables flag
     environment {
-        RUN_IDZ_CODE_REVIEW=false
-//        RUN_IDZ_CODE_REVIEW=true
+        //RUN_IDZ_CODE_REVIEW=false
+        RUN_IDZ_CODE_REVIEW=true
         JAVA_HOME='/usr/lpp/java/J11.0_64'
         IBM_JAVA_ENABLE_ASCII_FILETAG='ON'
         DBB_HOME='/var/dbb'
