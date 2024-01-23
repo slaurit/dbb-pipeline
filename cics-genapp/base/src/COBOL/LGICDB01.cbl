@@ -116,7 +116,7 @@
        MAINLINE SECTION.
 
            DISPLAY 'MEENA'.
-           DISPLAY 'FOR CODE COVERAGE TESTING'.
+           DISPLAY 'FOR CODE COVERAGE TESTING MDESU'.
       *----------------------------------------------------------------*
       * Common code                                                    *
       *----------------------------------------------------------------*
