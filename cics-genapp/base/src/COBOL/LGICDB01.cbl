@@ -115,7 +115,7 @@
       *----------------------------------------------------------------*
        MAINLINE SECTION.
 
-           DISPLAY 'PROY'.
+           DISPLAY 'MEENA'.
            DISPLAY 'FOR CODE COVERAGE TESTING'.
       *----------------------------------------------------------------*
       * Common code                                                    *
