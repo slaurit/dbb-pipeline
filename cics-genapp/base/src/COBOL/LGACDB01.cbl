@@ -25,7 +25,7 @@
       *  SAJ 06/13/2023
       *  SAJ DEVELOP
       *  CRP 07/10/2023
-      *  MEENA DEMO TEST
+      *  MEENA DEMO TEST2
       ******************************************************************
        IDENTIFICATION DIVISION.
        PROGRAM-ID. LGACDB01.
