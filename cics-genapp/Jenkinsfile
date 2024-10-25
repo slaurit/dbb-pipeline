@@ -13,7 +13,7 @@ def dbbGitBranch = 'main'
 // DBB
 def dbbHome='/var/dbb'
 def dbbUrl='https://mvpserver1.fyre.ibm.com:9443/dbb'
-def dbbHlq='MDESU.JENKINS'
+def dbbHlq='MDESU.DEMO'
 def dbbBuildType='-f'
 def dbbGroovyzOpts= '-Dorg.slf4j.simpleLogger'
 def dbbBuildExtraOpts= ''
