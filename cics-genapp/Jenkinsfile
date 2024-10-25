@@ -236,35 +236,7 @@ pipeline {
             }
         }
         
-        stage("IDz Code Review") {
-            when  { expression { return  idzCodeReviewFlag == true  } }
-            steps {
-                script{
-                    if ( hasBuildFiles ) {
-                        def crContent = null
-                        node( zOsAgentLabel ) {
-                            BUILD_OUTPUT_FOLDER = sh (script: "ls ${WORKSPACE}/BUILD-${BUILD_NUMBER}  | grep build | sort -u", returnStdout: true).trim()
-                            sh "$DBB_HOME/bin/groovyz $dbbGroovyzOpts ${WORKSPACE}/dbb/Pipeline/RunIDZCodeReview/RunCodeReview.groovy --workDir ${WORKSPACE}/BUILD-${BUILD_NUMBER}/${BUILD_OUTPUT_FOLDER} -cr  ${WORKSPACE}/cics-genapp/cics-genapp/cr-rules/CodeReviewRules.dat -ccr  ${WORKSPACE}/cics-genapp/cics-genapp/cr-rules/CodeReviewRules.ccr"
-                            dir ("${WORKSPACE}/BUILD-${BUILD_NUMBER}/${BUILD_OUTPUT_FOLDER}") {
-                                def crJunitFile = fileExists "CodeReviewJUNIT.xml"
-                                if ( crJunitFile ) {
-                                    crContent = readFile file: "CodeReviewJUNIT.xml"
-                                    archiveArtifacts allowEmptyArchive: true,
-                                            artifacts: '*.csv,*.xml',
-                                            onlyIfSuccessful: false
-                                }
-                            }
-                        }
-                        if ( crContent ) {
-                            sh "mkdir -p ${WORKSPACE}/BUILD-${BUILD_NUMBER}"
-                            writeFile file: "${WORKSPACE}/BUILD-${BUILD_NUMBER}/CodeReviewJUNIT.xml", text:crContent.trim()
-                            junit allowEmptyResults: true, testResults: "BUILD-${BUILD_NUMBER}/CodeReviewJUNIT.xml"
-                        }
-                    }
-                }
-            }
-        }
-        
+           
         stage('UCD Package') {
             steps {
                 script {
