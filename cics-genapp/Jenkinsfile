@@ -68,7 +68,7 @@ pipeline {
         DBB_CONF='/var/dbb/conf'
     //  DBB_URL='https://dbbsample-dbb-route-dbbns.apps.mvpopenshift.cp.fyre.ibm.com/dbb/'
         DBB_URL='https://mvpserver1.fyre.ibm.com:9443/dbb'
-        DBB_HLQ='MDESU.JENKINS'
+        DBB_HLQ='MDESU.DEMO'
         ARTIFACTORY_URL='https://na.artifactory.swg-devops.com/artifactory'
         ARTIFACTORY_REPO_PATH='hyc-mvp-team-maven-local/mdesu'
 //        ARTIFACTORY_REPO_PATH='hyc-mvp-team-maven-local/PriyaGenapp'
