@@ -26,7 +26,7 @@
       *  SAJ DEVELOP
       *  CRP 07/10/2023
       *  MEENA DEMO TESTM DEMO
-      * MEENA DEMO CHANGE HCSC 5                                   
+      * MEENA DEMO CHANGE HCSC 5  main                                 
       ******************************************************************
        IDENTIFICATION DIVISION.
        PROGRAM-ID. LGACDB01.
