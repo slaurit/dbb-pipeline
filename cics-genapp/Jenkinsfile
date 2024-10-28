@@ -264,38 +264,16 @@ EXTREPO.url=${artiUrl}
             }
         }
         
-        stage('UCD Deploy to Dev') {
+        stage('UCD Deploy') {
          
             steps {
                 script{
                     if ( srcGitBranch == 'feature1') {
                        def ucdEnv = 'Development'
-                 //    }
-                    if ( hasBuildFiles ) {
-                        script{
-                            step(
-                                  [$class: 'UCDeployPublisher',
-                                    deploy: [
-                                        deployApp: ucdApplication,
-                                        deployDesc: 'Requested from Jenkins',
-                                        deployEnv: ucdEnv,
-                                        deployOnlyChanged: false,
-                                        deployProc: ucdProcess,
-                                        deployVersions: ucdComponent + ':latest'],
-                                    siteName: ucdSite])
-                        }
                     }
-                  }      
-                }
-            }
-        }
-                stage('UCD Deploy to Test') {
-        
-            steps {
-                script{
                     if ( srcGitBranch == 'release') {
                        def ucdEnv = 'Test'
-                   //  }
+                    }
                     if ( hasBuildFiles ) {
                         script{
                             step(
@@ -313,6 +291,4 @@ EXTREPO.url=${artiUrl}
                   }      
                 }
             }
-        }
-    }
-}
+        }           
