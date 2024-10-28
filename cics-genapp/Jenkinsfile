@@ -28,7 +28,7 @@ def ARTIFACTORY_REPO_PATH='hyc-mvp-team-maven-local/mdesu'
 def ucdApplication = 'meena-GenApp-Deploy'
 def ucdProcess = 'Deploy'
 def ucdComponent = 'meena-GenAppComponent'
-def ucdEnv = 'Test'
+//def ucdEnv = 'Test'
 def ucdSite = 'Jenkins2UCDServer'
 def ucdBuztool = '/var/ucd/v73/bin/buztool.sh'
 
@@ -264,7 +264,35 @@ EXTREPO.url=${artiUrl}
             }
         }
         
-        stage('UCD Deploy') {
+        stage('UCD Deploy to Dev') {
+            when {
+            env.GIT_BRANCH= 'feature1'
+           def ucdEnv = 'Development'
+        }
+            steps {
+                script{
+                    if ( hasBuildFiles ) {
+                        script{
+                            step(
+                                  [$class: 'UCDeployPublisher',
+                                    deploy: [
+                                        deployApp: ucdApplication,
+                                        deployDesc: 'Requested from Jenkins',
+                                        deployEnv: ucdEnv,
+                                        deployOnlyChanged: false,
+                                        deployProc: ucdProcess,
+                                        deployVersions: ucdComponent + ':latest'],
+                                    siteName: ucdSite])
+                        }
+                    }
+                }
+            }
+        }
+                stage('UCD Deploy to Test') {
+            when {
+            env.GIT_BRANCH= 'release'
+           def ucdEnv = 'Test'
+        }
             steps {
                 script{
                     if ( hasBuildFiles ) {
