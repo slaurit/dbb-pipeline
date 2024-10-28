@@ -266,9 +266,9 @@ EXTREPO.url=${artiUrl}
         
         stage('UCD Deploy to Dev') {
             when {
-            env.GIT_BRANCH= 'feature1'
+            branch 'feature1'
            def ucdEnv = 'Development'
-        }
+           }
             steps {
                 script{
                     if ( hasBuildFiles ) {
@@ -290,7 +290,7 @@ EXTREPO.url=${artiUrl}
         }
                 stage('UCD Deploy to Test') {
             when {
-            env.GIT_BRANCH= 'release'
+            branch 'release'
            def ucdEnv = 'Test'
         }
             steps {
