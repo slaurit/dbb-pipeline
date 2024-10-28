@@ -270,7 +270,7 @@ EXTREPO.url=${artiUrl}
                 script{
                     if ( srcGitBranch == 'feature1') {
                        def ucdEnv = 'Development'
-                     }
+                 //    }
                     if ( hasBuildFiles ) {
                         script{
                             step(
@@ -285,6 +285,7 @@ EXTREPO.url=${artiUrl}
                                     siteName: ucdSite])
                         }
                     }
+                  }      
                 }
             }
         }
@@ -294,7 +295,7 @@ EXTREPO.url=${artiUrl}
                 script{
                     if ( srcGitBranch == 'release') {
                        def ucdEnv = 'Test'
-                     }
+                   //  }
                     if ( hasBuildFiles ) {
                         script{
                             step(
@@ -309,6 +310,7 @@ EXTREPO.url=${artiUrl}
                                     siteName: ucdSite])
                         }
                     }
+                  }      
                 }
             }
         }
