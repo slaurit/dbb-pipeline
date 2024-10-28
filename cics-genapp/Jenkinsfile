@@ -265,12 +265,12 @@ EXTREPO.url=${artiUrl}
         }
         
         stage('UCD Deploy to Dev') {
-       //     if ( srcGitBranch == 'feature1') {
-            echo "branch name" $srcGitBranch   
-            def ucdEnv = 'Development'
-        //    }
+         
             steps {
                 script{
+                    if ( srcGitBranch == 'feature1') {
+                       def ucdEnv = 'Development'
+                     }
                     if ( hasBuildFiles ) {
                         script{
                             step(
@@ -289,12 +289,12 @@ EXTREPO.url=${artiUrl}
             }
         }
                 stage('UCD Deploy to Test') {
-        //     if ( srcGitBranch == 'release') {
-                  echo "branch name" $srcGitBranch  
-                    def ucdEnv = 'Test'
-         //    }
+        
             steps {
                 script{
+                    if ( srcGitBranch == 'release') {
+                       def ucdEnv = 'Test'
+                     }
                     if ( hasBuildFiles ) {
                         script{
                             step(
