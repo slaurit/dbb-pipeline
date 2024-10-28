@@ -22,7 +22,7 @@ def dbbCredentialOptions='-id MDESU -pf /u/mdesu/password.txt --url jdbc:db2://t
 // Artifactory
 def artiCredentialsId = 'meenaArtifcatoryID'
 def ARTIFACTORY_URL='https://na.artifactory.swg-devops.com/artifactory/'
-def ARTIFACTORY_REPO_PATH='hyc-mvp-team-maven-local/mdesu'
+def ARTIFACTORY_REPO_PATH='hyc-mvp-team-maven-local/mdesu/release'
 
 // UCD
 def ucdApplication = 'meena-GenApp-Deploy'
@@ -68,9 +68,9 @@ pipeline {
         DBB_CONF='/var/dbb/conf'
     //  DBB_URL='https://dbbsample-dbb-route-dbbns.apps.mvpopenshift.cp.fyre.ibm.com/dbb/'
         DBB_URL='https://mvpserver1.fyre.ibm.com:9443/dbb'
-        DBB_HLQ='MDESU.DEMO'
+        DBB_HLQ='MDESU.DEMO.RLSE'
         ARTIFACTORY_URL='https://na.artifactory.swg-devops.com/artifactory'
-        ARTIFACTORY_REPO_PATH='hyc-mvp-team-maven-local/mdesu'
+        ARTIFACTORY_REPO_PATH='hyc-mvp-team-maven-local/mdesu/release'
 //        ARTIFACTORY_REPO_PATH='hyc-mvp-team-maven-local/PriyaGenapp'
         UCD_BUZTOOL_PATH='/var/ucd/v73/bin/buztool.sh'
         UCD_HOME='/var/ucd/v73'
